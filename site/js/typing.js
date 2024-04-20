@@ -158,6 +158,8 @@ document.getElementById('game').addEventListener('keyup', ev => {
 document.getElementById('newGameBtn').addEventListener('click', () => {
   gameOver();
   newGame();
+  console.log('Game Over')
+  window.location.reload();
 });
 
 newGame();
