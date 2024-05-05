@@ -93,12 +93,14 @@ document.getElementById('game').addEventListener('keyup', ev => {
       if (currentLetter.nextSibling) {
         addClass(currentLetter.nextSibling, 'current');
       }
-    } else {
-      const incorrectLetter = document.createElement('span');
-      incorrectLetter.innerHTML = key;
-      incorrectLetter.className = 'letter incorrect extra';
-      currentWord.appendChild(incorrectLetter);
     }
+    //  else {
+    //   console.log("currentLettercurrentLette222222r",currentLetter);
+    //   const incorrectLetter = document.createElement('span');
+    //   incorrectLetter.innerHTML = key;
+    //   incorrectLetter.className = 'letter incorrect extra';
+    //   currentWord.appendChild(incorrectLetter);
+    // }
   }
 
   if (isSpace) {
@@ -111,6 +113,7 @@ document.getElementById('game').addEventListener('keyup', ev => {
     removeClass(currentWord, 'current');
     addClass(currentWord.nextSibling, 'current');
     if (currentLetter) {
+      console.log('currentLetter',currentLetter);
       removeClass(currentLetter, 'current');
     }
     addClass(currentWord.nextSibling.firstChild, 'current');
