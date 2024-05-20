@@ -41,15 +41,58 @@ function getWpm() {
     const letters = [...word.children];
     const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
     const correctLetters = letters.filter(letter => letter.className.includes('correct'));
+    // console.log('correctLetters.length',correctLetters.length)
+    // console.log('incorrectLetters.length',incorrectLetters.length)
+    // console.log('letters.length',letters.length)
     return incorrectLetters.length === 0 && correctLetters.length === letters.length;
   });
+  console.log("Wpm: ",correctWords.length / gameTime * 60000);
   return correctWords.length / gameTime * 60000;
+}
+
+function getMistake(){
+  const words = [...document.querySelectorAll('.word')];
+  const lastTypedWord = document.querySelector('.word.current');
+  const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
+  const typedWords = words.slice(0, lastTypedWordIndex);
+  const incorrectWords = typedWords.filter(word => {
+    const letters = [...word.children];
+    const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
+    return incorrectLetters.length;
+  });
+  console.log("Mistake: ",incorrectWords.length)
+  return incorrectWords.length;
+
+}
+
+function getAccuracy(){
+  const words = [...document.querySelectorAll('.word')];
+  const lastTypedWord = document.querySelector('.word.current');
+  const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
+  const typedWords = words.slice(0, lastTypedWordIndex);
+  const correctWords = typedWords.filter(word => {
+    const letters = [...word.children];
+    const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
+    const correctLetters = letters.filter(letter => letter.className.includes('correct'));
+    return incorrectLetters.length === 0 && correctLetters.length === letters.length;
+  });
+  const incorrectWords = typedWords.filter(word => {
+    const letters = [...word.children];
+    const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
+    return incorrectLetters.length;
+  });
+  console.log("Accuracy:",((correctWords.length / (correctWords.length + incorrectWords.length)) * 100).toFixed(0),"%");
+  return correctWords.length / (correctWords.length + incorrectWords.length) * 100;
+
+
 }
 
 function gameOver() {
   clearInterval(window.timer);
   addClass(document.getElementById('game'), 'over');
   const result = getWpm();
+  const mistake = getMistake();
+  const accuracy = getAccuracy();
   document.getElementById('info').innerHTML = `WPM: ${result}`;
 }
 
