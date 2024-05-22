@@ -82,7 +82,7 @@ function getAccuracy(){
     return incorrectLetters.length;
   });
   console.log("Accuracy:",((correctWords.length / (correctWords.length + incorrectWords.length)) * 100).toFixed(0),"%");
-  return correctWords.length / (correctWords.length + incorrectWords.length) * 100;
+  return ((correctWords.length / (correctWords.length + incorrectWords.length)) * 100).toFixed(0);
 
 
 }
@@ -94,6 +94,8 @@ function gameOver() {
   const mistake = getMistake();
   const accuracy = getAccuracy();
   document.getElementById('info').innerHTML = `WPM: ${result}`;
+  document.getElementById('accuracy').innerHTML = `Accuracy: ${accuracy} %`;
+  document.getElementById('mistake').innerHTML = `Mistake: ${mistake}`;
 }
 
 document.getElementById('game').addEventListener('keyup', ev => {

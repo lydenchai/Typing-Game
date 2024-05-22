@@ -27,14 +27,29 @@ h1 svg{
     fill: var(--primaryColor);
 }
 #header{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 20px 6px 30px;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.header2{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 1.6rem;
+
 }
 #buttons{
     text-align: right;
 }
 #info{
+    color: var(--primaryColor);
+}
+#accuracy{
+    color: var(--primaryColor);
+}
+#mistake{
     color: var(--primaryColor);
 }
 button{
@@ -98,8 +113,8 @@ div.word{
     height: 1.6rem;
     background: var(--primaryColor);
     position: fixed;
-    top: 198px;
-    left: 18px;
+    /* top: 198px;
+    left: 18px; */
     animation: blink .3s infinite;
 }
 #game:focus #cursor{
