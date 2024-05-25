@@ -4,6 +4,7 @@
     --textPrimary: #fff;
     --textSecondary: #666;
     --primaryColor: #fd4;
+    --resuleColor: rgb(232, 232, 1);
 }
 body{
     font-family: 'Roboto', sans-serif;
@@ -44,13 +45,13 @@ h1 svg{
     text-align: right;
 }
 #info{
-    color: var(--primaryColor);
+    color: var(--textPrimary);
 }
 #accuracy{
-    color: var(--primaryColor);
+    color: var(--textPrimary);
 }
 #mistake{
-    color: var(--primaryColor);
+    color: var(--textPrimary);
 }
 button{
     background: rgba(255,255,255,.2);
@@ -130,3 +131,34 @@ div.word{
 #game.over #focus-error {
     display: none;
 }
+
+#keyboard {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .row span {
+    display: inline-block;
+    /* width: 40px;
+    height: 40px; */
+    padding: 15px;
+    border: 1px solid rgb(123, 200, 221);
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .space {
+    width: 180px;
+  }
+  
+  .active {
+    background-color: lightblue;
+  }
+  

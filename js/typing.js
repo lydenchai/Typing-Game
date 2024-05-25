@@ -96,6 +96,11 @@ function gameOver() {
   document.getElementById('info').innerHTML = `WPM: ${result}`;
   document.getElementById('accuracy').innerHTML = `Accuracy: ${accuracy} %`;
   document.getElementById('mistake').innerHTML = `Mistake: ${mistake}`;
+//   let className = `result-${result}`;
+
+// // Add the class to the element
+// infoElement.classList.add(className);
+
 }
 
 document.getElementById('game').addEventListener('keyup', ev => {
@@ -130,6 +135,9 @@ document.getElementById('game').addEventListener('keyup', ev => {
       document.getElementById('info').innerHTML = sLeft + '';
     }, 1000);
   }
+
+
+
 
   if (isLetter) {
     if (currentLetter) {
@@ -211,3 +219,34 @@ document.getElementById('newGameBtn').addEventListener('click', () => {
 });
 
 newGame();
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const keyboard = document.getElementById('keyboard');
+  const keys = keyboard.querySelectorAll('span');
+
+  keys.forEach(key => {
+    key.addEventListener('click', () => {
+      const keyChar = key.dataset.key;
+      handleKeyPress(keyChar);
+    });
+  });
+
+  document.addEventListener('keydown', event => {
+    const keyChar = event.code;
+    handleKeyPress(keyChar);
+  });
+
+  function handleKeyPress(keyChar) {
+    const targetKey = keyboard.querySelector(`[data-key="${keyChar}"]`);
+    if (targetKey) {
+      targetKey.classList.add('active');
+      setTimeout(() => {
+        targetKey.classList.remove('active');
+      }, 100);
+      // Call your game function or update logic here
+      console.log('Pressed key:', keyChar);
+    }
+  }
+});
